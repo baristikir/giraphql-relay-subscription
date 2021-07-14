@@ -122,9 +122,11 @@ async function startServer() {
 				{
 					schema,
 					onSubscribe: (_ctx, message) => {
-						// Access to the request header cookies, where the session cookie is also stored
-						// => `_ctx.extra.request.headers.cookie`
 						console.log(message);
+					},
+					onOperation: (_ctx, _message, _args, _info) => {
+						// Throws the error displayed in the issue
+						console.log('OperationResult: %o', _info);
 					},
 				},
 				wsServer,
