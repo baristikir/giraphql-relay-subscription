@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: 'giraphql-relay-postgres'
+    restart: unless-stopped
+    image: 'postgres:13'
+    ports:
+      - '15432:5432'
+    volumes:
+      - 'pgdata:/var/lib/postgresql/data/'
+    environment:
+      POSTGRES_PASSWORD: postgres
+
+  api:
+    container_name: 'giraphql-relay-api'
+    restart: unless-stopped
+    image: node:16
+    command: yarn workspace api run dev
+    ports:
+      - '4000:4000'
+    volumes:
+      - .:/srv/api:rw
+    working_dir: /srv/api
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@giraphql-relay-postgres/postgres
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata: {}
