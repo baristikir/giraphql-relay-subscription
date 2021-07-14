@@ -1,0 +1,2 @@
+async function startServer() {}
+startServer();

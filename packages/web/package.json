@@ -1,0 +1,28 @@
+{
+  "name": "web",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql"
+  },
+  "dependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-relay": "^11.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@vitejs/plugin-react-refresh": "^1.3.1",
+    "babel-plugin-relay": "^11.0.2",
+    "graphql": "^15.5.1",
+    "relay-compiler": "^11.0.2",
+    "relay-config": "^11.0.2",
+    "typescript": "^4.3.2",
+    "vite": "^2.4.2"
+  }
+}
